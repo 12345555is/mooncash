@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Money Mission 💸</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to right, #d1f2eb, #f9e79f);
+      padding: 40px;
+    }
+    h1 {
+      color: #1a5276;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #145a32;
+    }
+  </style>
+</head>
+<body>
+  <h1>כמה כסף אתה צריך? 💰</h1>
+  <input type="number" id="amount" placeholder="הכנס סכום בש"ח">
+  <br>
+  <button onclick="generatePlan()">צור לי תוכנית</button>
+  <div id="result"></div>
+
+  <script>
+    function generatePlan() {
+      const amount = parseInt(document.getElementById('amount').value);
+      const result = document.getElementById('result');
+      if (!amount || amount <= 0) {
+        result.innerText = 'נא להזין סכום תקף.';
+        return;
+      }
+
+      const ideas = [
+        `תמצא 3 חפצים ישנים בבית שלך ומכור אותם ביד2 או פייסבוק.`,
+        `תכין 2 עוגות/פיצות/מאפים ותמכור לשכנים או בחברים.`,
+        `תציע לעשות תיקונים/עזרה טכנית (כבלים, מחשב, טלפון) למכרים שלך.`,
+        `תציע שיעורים פרטיים או עזרה בשיעורים באיזה תחום שאתה טוב בו.`,
+        `תעבוד יום אחד בסידור/ניקיון/שליחויות – פרסם בקבוצות.`
+      ];
+
+      const randomIdea = ideas[Math.floor(Math.random() * ideas.length)];
+      result.innerText = `כדי להרוויח ${amount} ש"ח, הנה רעיון: \n${randomIdea}`;
+    }
+  </script>
+</body>
+</html>
